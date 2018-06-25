@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>clipboardData API : What's in clipboard?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>clipboardData API : What's in clipboard?</h1>
+			</div>
+		</div>
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<ul>
+				<li>
+					Just paste anything to whole html body area.
+				</li>
+				<li>
+					Test platform: macOS + Chrome latest.
+				</li>
+				<li>
+					Every single action of copy(ctrl + c / cmd + c) contains ONLY one object.
+					<ul>
+						<li>clipboardData -> DataTransfer</li>
+						<li>clipboardData.files -> FileList</li>
+						<li>clipboardData.items -> DataTransferItemList</li>
+						<li>clipboardData.types -> Array(2)</li>
+					</ul>
+				</li>
+				<li>
+					Once you copy many files, clipboardData API will present the last file you've selected.
+				</li>
+				<li>
+					.pdf file will be identify as a image file.
+				</li>
+				<li>Depend on what you've copied, items object will be different:
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">condition</th>
+								<th scope="col">items[0].kind</th>
+								<th scope="col">items[1].kind</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row">Pure string</td>
+								<td>string</td>
+								<td>undefined</td>
+							</tr>
+							<tr>
+								<td scope="row">String with hidden metadata (e.g. html)</td>
+								<td>string</td>
+								<td>string</td>
+							</tr>
+							<tr>
+								<td scope="row">File(s)</td>
+								<td>string</td>
+								<td>file</td>
+							</tr>
+							<tr>
+								<td scope="row">Print screen to clipboard</td>
+								<td>file</td>
+								<td>undefined</td>
+							</tr>
+						</tbody>
+					</table>
+				</li>
+				<li>
+					You can see more detail in <a href="https://www.w3.org/TR/clipboard-apis/" target="_blank">W3C Document</a>.
+				</li>
+			</ul>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="jumbotron">
+			<div class="row">
+				<div class="file-preview col-sm-4"></div>
+				<div class="file-info col-sm-8"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="console-area"></div>
+			</div>
+			<div class="col-sm-4">
+				<button type="button" class="btn btn-primary btn-lg btn-block" id="clear-all">Clear</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</body>
+</html>
