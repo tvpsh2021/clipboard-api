@@ -15,13 +15,16 @@
 				<h1>clipboardData API : What's in clipboard?</h1>
 			</div>
 		</div>
-		<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<div class="alert alert-dark alert-dismissible fade show" role="alert">
 			<ul>
 				<li>
 					Just paste anything to whole html body area.
 				</li>
 				<li>
-					Test platform: macOS + Chrome latest.
+					Test OS: macOS, Windows.
+				</li>
+				<li>
+					Test Browser: Chrome latest.
 				</li>
 				<li>
 					Every single action of copy(ctrl + c / cmd + c) contains ONLY one object.
@@ -33,43 +36,55 @@
 					</ul>
 				</li>
 				<li>
-					Once you copy many files, clipboardData API will present the last file you've selected.
+					(macOS) Once you copy many files, clipboardData API will present the last file you've selected.
 				</li>
 				<li>
-					.pdf file will be identify as a image file.
+					(macOS) .pdf file will be identify as a image file.
 				</li>
 				<li>Depend on what you've copied, items object will be different:
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">condition</th>
-								<th scope="col">items[0].kind</th>
-								<th scope="col">items[1].kind</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td scope="row">Pure string</td>
-								<td>string</td>
-								<td>undefined</td>
-							</tr>
-							<tr>
-								<td scope="row">String with hidden metadata (e.g. html)</td>
-								<td>string</td>
-								<td>string</td>
-							</tr>
-							<tr>
-								<td scope="row">File(s)</td>
-								<td>string</td>
-								<td>file</td>
-							</tr>
-							<tr>
-								<td scope="row">Print screen to clipboard</td>
-								<td>file</td>
-								<td>undefined</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="table-responsive-lg">
+						<table class="condition-table table table-sm table-hover table-dark">
+							<thead>
+								<tr>
+									<th scope="col">condition</th>
+									<th scope="col">macOS items[0].kind</th>
+									<th scope="col">macOS items[1].kind</th>
+									<th scope="col">Windows items[0].kind</th>
+									<th scope="col">Windows items[1].kind</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td scope="row">Pure string</td>
+									<td>string</td>
+									<td>undefined</td>
+									<td>string</td>
+									<td>undefined</td>
+								</tr>
+								<tr>
+									<td scope="row">String with hidden metadata (e.g. html)</td>
+									<td>string</td>
+									<td>string</td>
+									<td>string</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td scope="row">File(s)</td>
+									<td>string</td>
+									<td>file</td>
+									<td>undefined</td>
+									<td>undefined</td>
+								</tr>
+								<tr>
+									<td scope="row">Print screen to clipboard</td>
+									<td>file</td>
+									<td>undefined</td>
+									<td>file</td>
+									<td>undefined</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</li>
 				<li>
 					You can see more detail in <a href="https://www.w3.org/TR/clipboard-apis/" target="_blank">W3C Document</a>.

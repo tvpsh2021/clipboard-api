@@ -10,7 +10,7 @@ When trying to paste image, it works on macOS with Chrome, but Windows with Chro
 
 # Reference
 
-[1] Clipboard API and events (W3C latest published version) - https://www.w3.org/TR/clipboard-apis/#async-clipboard-api
+[1] Clipboard API and events (W3C latest published version) - https://www.w3.org/TR/clipboard-apis
 
 [2] Unblocking Clipboard Access (Google) - https://developers.google.com/web/updates/2018/03/clipboardapi
 
