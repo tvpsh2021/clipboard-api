@@ -116,7 +116,7 @@ $(function () {
 
         break;
       default:
-        alert('You have just found a bug! Tell author what have you copy to here: tvpsh2020@gmail.com');
+        alert('You have just found a bug! Tell author what have you copy to here: tvpsh2021@gmail.com');
     }
 
     console.log('=====================================');
